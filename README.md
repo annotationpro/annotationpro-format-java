@@ -3,6 +3,7 @@ Java library to save annotation in Annotation Pro format.
 
 # Simple usage example 
 
+```Java
 // annotation model
 Annotation annotation = new Annotation(44100);
 
@@ -31,3 +32,4 @@ try {
 } catch (IOException e) {
     e.printStackTrace();
 }
+```
