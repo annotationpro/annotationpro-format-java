@@ -1,7 +1,7 @@
 # annotationpro-format-java
 Java library to save annotation in Annotation Pro format.
 
-# Simple usage example 
+# Write annotation example 
 
 ```Java
         // annotation model
@@ -33,4 +33,24 @@ Java library to save annotation in Annotation Pro format.
             e.printStackTrace();
         }
 
+```
+# Read annotation example
+
+```Java
+try {
+    // read from file
+    Path file = Paths.get("c:\\annotation new.antx");
+    String xmlContent = new String(Files.readAllBytes(file));
+
+    // deserialize annotation
+    AnnotationDeserializer annotationDeserializer = new AnnotationDeserializer();
+    Annotation annotation = annotationDeserializer.deserializeAnnotation(xmlContent);
+
+    // get first layer and first segment on this layer
+    Layer layer = annotation.getLayers().get(0);
+    Segment segment = layer.getSegments().get(0);
+
+} catch (Exception e) {
+    e.printStackTrace();
+}
 ```
