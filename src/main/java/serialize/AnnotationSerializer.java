@@ -1,4 +1,4 @@
-package service;
+package serialize;
 
 import model.Annotation;
 import model.Layer;
@@ -7,7 +7,7 @@ import model.Segment;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DataService {
+public class AnnotationSerializer {
     public String serializeAnnotation(Annotation annotation) {
         StringBuilder xmlContent = new StringBuilder();
         StringBuilder segmentsContent = new StringBuilder();
