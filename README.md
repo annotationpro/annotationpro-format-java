@@ -12,13 +12,11 @@ Java library to save annotation in Annotation Pro format.
         layer.setFontSize(12);
         annotation.getLayers().add(layer);
 
-        // new segment
+        // new segments
         Segment segment = new Segment("word", 100, 44100);
-        segment.setIdLayer(layer.getId());
         layer.getSegments().add(segment);
 
         Segment segment2 = new Segment("phrase", 52000, 44100);
-        segment2.setIdLayer(layer.getId());
         layer.getSegments().add(segment2);
 
         // serialization
