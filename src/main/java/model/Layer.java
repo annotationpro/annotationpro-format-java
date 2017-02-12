@@ -6,8 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Data
-public class Layer {
+/**
+ * Class with annotation layer. The most important is collection of segments, which contains segments for
+ * this layer.
+ *
+ * @author Wojciech Klessa
+ * @since 2017-01-10
+ */
+public @Data class Layer {
     public Layer(String name) {
         setId(UUID.randomUUID().toString());
         setName(name);

@@ -19,7 +19,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * This class helps to deserialize xml content to java objects.
+ * It contains main method: deserializeAnnotation which return Annotation object from string xmlContent
+ *
+ * @author Wojciech Klessa
+ * @since 2017-01-10
+ */
 public class AnnotationDeserializer {
+
+    /**
+     * Helps to deserialize xml content to Annotation java object.
+     * @param xmlContent Annotation in xml format from ANTX file.
+     * @return Annotation java object
+     * @throws ParserConfigurationException in case of incorrect format of xmlContent (xmlBuilder.parse)
+     * @throws SAXException in case of incorrect format of xmlContent (xmlBuilder.parse)
+     * @throws IOException in case of incorrect format of xmlContent (xmlBuilder.parse)
+     */
     public Annotation deserializeAnnotation(String xmlContent) throws ParserConfigurationException, SAXException, IOException {
         // xml tools
         DocumentBuilderFactory xmlFactory = DocumentBuilderFactory.newInstance();
@@ -38,6 +54,11 @@ public class AnnotationDeserializer {
         return annotation;
     }
 
+    /**
+     * Inserts parsed segments into layers
+     * @param layers Layer collection
+     * @param segments Segment to select them into correct layers
+     */
     private void insertSegmentsIntoLayers(List<Layer> layers, List<Segment> segments) {
         for (Layer layer : layers) {
             for (Segment segment : segments) {
@@ -48,6 +69,11 @@ public class AnnotationDeserializer {
         }
     }
 
+    /**
+     * Deserialize segments from xmlDocument
+     * @param xmlDocument Document with annotation
+     * @return Collection of segments
+     */
     private List<Segment> deserializeSegments(Document xmlDocument) {
         List<Segment> segments = new ArrayList<Segment>();
 
@@ -60,6 +86,11 @@ public class AnnotationDeserializer {
         return segments;
     }
 
+    /**
+     * Deserialize one segment from xml with segment part
+     * @param node Xml node with segment information
+     * @return Segment object
+     */
     private Segment deserializeSegment(Node node) {
         Element element = (Element) node;
 
@@ -87,6 +118,11 @@ public class AnnotationDeserializer {
         return segment;
     }
 
+    /**
+     * Deserializes configuration hashmap from xmlDocument
+     * @param xmlDocument Xml content with annotation
+     * @return HashMap entries with configuration
+     */
     private HashMap<String, String> deserializeConfiguration(Document xmlDocument) {
         HashMap<String, String> configuration = new HashMap<String, String>();
 
@@ -100,6 +136,11 @@ public class AnnotationDeserializer {
         return configuration;
     }
 
+    /**
+     * Deserialize one configuration entry from configuration xml node
+     * @param node Xml node with configuration information
+     * @return Configuration entry
+     */
     private Configuration deserializeConfigurationItem(Node node) {
 
         Element element = (Element) node;
@@ -109,6 +150,11 @@ public class AnnotationDeserializer {
         return new Configuration(key, value);
     }
 
+    /**
+     * Deserializes layers from xmlDocument
+     * @param xmlDocument Xml document with annotation
+     * @return Layer collection
+     */
     private List<Layer> deserializeLayers(Document xmlDocument) {
         List<Layer> layers = new ArrayList<Layer>();
 
@@ -121,6 +167,11 @@ public class AnnotationDeserializer {
         return layers;
     }
 
+    /**
+     * Deserialize layer from xml node with layer information
+     * @param node Xml node with layer information
+     * @return Layer java object
+     */
     private Layer deserializeLayer(Node node) {
         Element element = (Element) node;
 

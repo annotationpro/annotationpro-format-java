@@ -4,8 +4,14 @@ import lombok.Data;
 
 import java.util.UUID;
 
-@Data
-public class Segment {
+/**
+ * This class contains all information abour annotation segment.
+ * The most important is: start, duration and label
+ *
+ * @author Wojciech Klessa
+ * @since 2017-01-10
+ */
+public @Data class Segment {
 
     public Segment(String label, double start, double duration) {
         setId(UUID.randomUUID().toString());

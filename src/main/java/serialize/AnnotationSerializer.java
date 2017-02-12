@@ -7,7 +7,24 @@ import model.Segment;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Helps to serialize annotation as java objects to xml string content
+ * Main method is: serializeAnnotation which gets annotation java object and
+ * returns string with annotation in xml format.
+ *
+ * XML BUILDER
+ * Decided not to use xml builder to be sure format always is exactly the same
+ * as in Annotation PRO and is independent from library version
+ *
+ * @author Wojciech Klessa
+ * @since 2017-01-10
+ */
 public class AnnotationSerializer {
+    /**
+     * Helps to serialize annotation java object to xml string
+     * @param annotation Annotation as java object
+     * @return Xml string with annotation
+     */
     public String serializeAnnotation(Annotation annotation) {
         StringBuilder xmlContent = new StringBuilder();
         StringBuilder segmentsContent = new StringBuilder();
@@ -31,6 +48,11 @@ public class AnnotationSerializer {
         return xmlContent.toString();
     }
 
+    /**
+     * Serializes one segment from java object to xml string
+     * @param segment Segment java object
+     * @return Xml string with segment information
+     */
     private String serializeSegment(Segment segment) {
 
         String template = "  <Segment>\n" +
@@ -78,6 +100,11 @@ public class AnnotationSerializer {
         );
     }
 
+    /**
+     * Serializes layer from java object to xml string
+     * @param layer Layer object
+     * @return Xml string with layer information
+     */
     private String serializeLayer(Layer layer) {
 
         String template = "  <Layer>\n" +
@@ -127,6 +154,11 @@ public class AnnotationSerializer {
         );
     }
 
+    /**
+     * Serializes configuration from HashMap to xml string
+     * @param configuration HashMap with configuration entries
+     * @return Xml string with configuration information
+     */
     private String serializeConfiguration(HashMap<String, String> configuration) {
 
         String template = "  <Configuration>\n" +
@@ -146,11 +178,21 @@ public class AnnotationSerializer {
         return builder.toString();
     }
 
+    /**
+     * Creates in simply way xml header
+     * This simply method has been chosen to support annotation pro xml format
+     * @return Xml string with xml header
+     */
     private String createAnnotationHeader() {
         return "<?xml version=\"1.0\" standalone=\"yes\"?>\n" +
                 "<AnnotationSystemDataSet xmlns=\"http://tempuri.org/AnnotationSystemDataSet.xsd\">\n";
     }
 
+    /**
+     * Creates in simply way xml footer
+     * This simply method has been chosen to support annotation pro xml format
+     * @return Xml string with xml footer
+     */
     private String createAnnotationFooter() {
         return "</AnnotationSystemDataSet>";
     }
