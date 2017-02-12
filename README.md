@@ -1,6 +1,18 @@
 # annotationpro-format-java
 Java library to save annotation in Annotation Pro format.
 
+# Import using Maven
+
+```Xml
+<dependencies>
+    <dependency>
+        <groupId>org.annotationpro</groupId>
+        <artifactId>annotationpro-format</artifactId>
+        <version>1.2</version>
+    </dependency>
+</dependencies>
+```
+
 # Write annotation example 
 
 ```Java
