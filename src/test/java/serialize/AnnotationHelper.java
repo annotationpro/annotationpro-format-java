@@ -52,7 +52,6 @@ public class AnnotationHelper {
 
         Segment segment = new Segment("",0,0);
         segment.setId(UUID_SEGMENT);
-        segment.setIdLayer(UUID_LAYER);
         segment.setForeColor(-16777216);
         segment.setBackColor(-1);
         segment.setBorderColor(-16777216);
